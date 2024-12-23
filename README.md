@@ -91,6 +91,7 @@ Cette API permet de gérer les bénéficiaires effectifs d'une entreprise selon 
 - **Documentation** : Générer une documentation Swagger pour une meilleure interactivité.
 - **Tests d'intégration** : Étendre la couverture des tests pour inclure des scénarios plus complexes.
 - **Ajouter la persistance des données**
+- **Pagination** : Ajout d'une pagination pour la liste des bénéficiaires et entreprises.
 
 ## Limites actuelles
 - L'API n'est pas sécurisée.
@@ -103,6 +104,8 @@ Cette API permet de gérer les bénéficiaires effectifs d'une entreprise selon 
 - **Ajout de la sécurité** : Intégrer Spring Security avec des rôles utilisateur pour gérer les accès.
 - **Évolutivité** : Préparer l'application pour qu'elle fonctionne avec une base de données relationnelle comme PostgreSQL ou MySQL dans un environnement de production.
 - **Ajout d'Actuator** : Configurer Spring Boot Actuator pour obtenir des points de terminaison de surveillance comme /actuator/health, /actuator/metrics, etc.
+- **Gestion des dépendances complexes entre bénéficiares indirects**
+
 
 ## Contact
 Pour toute question, contactez :
