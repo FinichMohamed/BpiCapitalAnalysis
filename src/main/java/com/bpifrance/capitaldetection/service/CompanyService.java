@@ -75,22 +75,25 @@ public class CompanyService {
 
         List<Map<String, Object>> effectiveBeneficiaries = new ArrayList<>();
         for (Map.Entry<Long, Double> entry : ownershipMap.entrySet()) {
-            if ("PHYSIQUE".equalsIgnoreCase(type) && entry.getValue() <= 25.0) {
+            if ("PERSON".equalsIgnoreCase(type) && entry.getValue() <= 25.0) {
                 continue; // Exclure les bénéficiaires avec moins de 25% pour les personnes physiques
             }
-            if ("EFFECTIF".equalsIgnoreCase(type) && entry.getValue() <= 25.0) {
+            if ("COMPANY".equalsIgnoreCase(type) && entry.getValue() <= 25.0) {
                 continue; // Exclure les bénéficiaires effectifs (seuil > 25%)
             }
+            if (!"ALL".equalsIgnoreCase(type) && !"PERSON".equalsIgnoreCase(type) && !"COMPANY".equalsIgnoreCase(type)) {
+                throw new IllegalArgumentException("Invalid type specified: " + type);
+            }
 
-                Person person = personRepository.findById(entry.getKey())
-                        .orElseThrow(() -> new ResourceNotFoundException("Person not found with id: " + entry.getKey()));
-                Map<String, Object> beneficiaryInfo = new HashMap<>();
-                beneficiaryInfo.put("id", person.getId());
-                beneficiaryInfo.put("firstName", person.getFirstName());
-                beneficiaryInfo.put("lastName", person.getLastName());
-                beneficiaryInfo.put("sharePercentage", entry.getValue());
-                effectiveBeneficiaries.add(beneficiaryInfo);
-
+            // Ajouter les informations sur le bénéficiaire
+            Person person = personRepository.findById(entry.getKey())
+                    .orElseThrow(() -> new ResourceNotFoundException("Person not found with id: " + entry.getKey()));
+            Map<String, Object> beneficiaryInfo = new HashMap<>();
+            beneficiaryInfo.put("id", person.getId());
+            beneficiaryInfo.put("firstName", person.getFirstName());
+            beneficiaryInfo.put("lastName", person.getLastName());
+            beneficiaryInfo.put("sharePercentage", entry.getValue());
+            effectiveBeneficiaries.add(beneficiaryInfo);
         }
 
         return effectiveBeneficiaries;
