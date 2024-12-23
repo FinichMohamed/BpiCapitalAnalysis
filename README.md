@@ -1,8 +1,7 @@
 # Documentation de l'API de Gestion des Bénéficiaires Effectifs
 
 ## Description
-Cette API permet de gérer les entités juridiques, les bénéficiaires effectifs, et les relations entre eux. Elle fournit des fonctionnalités pour créer, consulter et analyser la structure d'une entreprise, ainsi que pour identifier les bénéficiaires effectifs possédant plus de 25% des parts.
-
+Cette API permet de gérer les bénéficiaires effectifs d'une entreprise selon les règles KYC-LCBFT. Elle inclut des endpoints pour créer et manipuler des entreprises, des personnes physiques et leurs relations en tant que bénéficiaires.
 ## Prérequis
 - **Java 21**
 - **Maven**
